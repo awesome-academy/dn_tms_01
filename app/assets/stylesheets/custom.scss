@@ -73,7 +73,6 @@ table.verticalalign tbody tr td {
   width: 100px;
   height: 100px;
 }
-
 .no-padding {
   padding: 0 !important;
   margin: 0 !important;
@@ -149,4 +148,11 @@ table.verticalalign tbody tr td {
 
 span.error_message {
   color: #a94442;
+}
+.vcenter {
+  display: flex;
+  align-items: center;
+}
+.vcenter .progress {
+  margin-bottom: 0px;
 }

@@ -1,4 +1,6 @@
 class Subject < ApplicationRecord
+  enum status: {init: 0, studying: 1, finish: 2}
+
   has_many :course_subjects, dependent: :destroy
   has_many :subject_users, dependent: :destroy
   has_many :tasks, dependent: :destroy

@@ -1,0 +1,13 @@
+<% if course.init? %>
+  <span class="label label-success">
+    <%= t"user.status.active" %>
+  </span>
+  <% elsif course.studying? %>
+  <span class="label label-warning">
+    <%= t"user.status.pedding" %>
+  </span>
+  <% else %>
+  <span class="label label-danger">
+    <%= t"user.status.finish" %>
+  </span>
+<% end %>

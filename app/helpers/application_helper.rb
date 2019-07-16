@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include SessionsHelper
+
   def title page_title
     base_title = I18n.t "title"
     if page_title.blank?

@@ -1,0 +1,11 @@
+<tr>
+  <td><%= course.name %></td>
+  <td><%= course.description %></td>
+  <td><%= course.duration %> <%= course.duration_type %></td>
+  <td><%= image_tag course.picture.url, class: "images-circle avatar-size" %></td>
+  <td>
+    <%= render "layouts/status_course", course: course %>
+  </td>
+  <td><%= l(course.date_start, format: :long) %></td>
+  <td><%= l(course.date_end, format: :long) %></td>
+</tr>

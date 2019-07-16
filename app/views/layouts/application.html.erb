@@ -16,6 +16,7 @@
     <div class="container">
       <%= render "layouts/shared/flash_messages" %>
       <%= yield %>
+      <%= render "layouts/profile" if logged_in? %>
     </div>
   </div>
 </body>

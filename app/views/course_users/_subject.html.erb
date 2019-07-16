@@ -1,0 +1,43 @@
+<div class="row vcenter">
+      <div class="col-md-2">
+      <%= image_tag subject.picture.url, class: "img-circle avatar-size" %>
+    </div>
+    <% if subject.studying? %>
+      <div class="col-md-5">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar"
+            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+          <span class="label label-primary">Styding</span>
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-danger">Finish</button>
+      </div>
+    </div>
+    <% elsif subject.finish? %>
+    <div class="col-md-5">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger active" role="progressbar"
+            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+          <span class="label label-danger">Finish</span>
+      </div>
+    </div>
+    <% else %>
+      <div class="col-md-5">
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning active" role="progressbar"
+            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+          <span class="label label-warning">Pedding</span>
+      </div>
+    <% end %>

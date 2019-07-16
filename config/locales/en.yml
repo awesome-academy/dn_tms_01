@@ -1,7 +1,10 @@
 en:
+  not_found: "NOT FOUND"
   date:
     formats:
-      default: "%d-%m-%Y"
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %Y"
   title: "FRAMGIA TRAINING SYSTEM"
   session:
     login: "Please login"
@@ -14,7 +17,9 @@ en:
     placeholder_pass: "Password"
   table:
     course_name: "Course name"
+    description: "Description"
     duration: "Duration"
+    picture: "Picture"
     status: "Status"
     date_start: "Date start"
     date_end: "Date end"
@@ -49,6 +54,7 @@ en:
     user_page: "User page"
     dropdown: "Menu"
     close: "Close"
+    detail_course: "Details coures"
   messages:
     save_success: "Save successfully!"
     update_success: "Update successfully!"
@@ -90,10 +96,6 @@ en:
       submit: "Save"
       update: "Update"
   user:
-    status:
-      active: "ACTIVE"
-      pedding: "PEDDING"
-      finish: "FINISH"
     trainee:
       info: "Infomation"
       list_course: "Course list is participating"
@@ -106,9 +108,9 @@ en:
       female: "Female"
   course:
     duration_type:
-      hour: "Hour"
-      day: "Day"
-      month: "Moth"
+      hour: "H"
+      day: "D"
+      month: "M"
     status:
       init: "Init"
       start: "Start"
@@ -121,3 +123,9 @@ en:
             course_subjects:
               course_subjects_too_short: "Course should have at least %{count} Subject(s)"
               course_subjects_duplicate_subject: "Subject must be unique"
+    message:
+      user_not_default: "User doesn't exists!"
+  status:
+    active: "ACTIVE"
+    pedding: "PEDDING"
+    finish: "FINISH"

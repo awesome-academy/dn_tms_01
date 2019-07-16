@@ -1,11 +1,12 @@
 class Course < ApplicationRecord
-  # Enums
-  enum status: {init: 0, start: 1, finish: 2}
-  enum duration_types: {hour: 0, day: 1, month: 2}
+  enum duration_type: {hour: 0, day: 1, month: 2}
+  enum status: {init: 0, studying: 1, finish: 2}
 
   # Relationships
   has_many :course_users, dependent: :destroy
   has_many :course_subjects, dependent: :destroy
+  has_many :subject, through: :course_subjects
+  has_many :users, through: :course_users
 
   # Nested attribute
   accepts_nested_attributes_for :course_users, allow_destroy: true
@@ -34,6 +35,7 @@ class Course < ApplicationRecord
 
   # Query options
   scope :newest, ->{order id: :desc}
+  scope :sort_by_status, ->{order status: :asc}
 
   class << self
     def duration_types_i18n

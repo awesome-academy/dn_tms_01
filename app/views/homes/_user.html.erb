@@ -7,9 +7,9 @@
   <td><%= user.email %></td>
   <td>
     <% if user.supervisor? %>
-    <span class="label label-danger"><%= t "user.role.suppervisor" %></span>
+    <span class="label label-danger"><%= t "user.role.#{user.role}" %></span>
     <% else %>
-    <span class="label label-default"><%= t "user.role.trainee" %></span>
+    <span class="label label-default"><%= t "user.role.#{user.role}" %></span>
     <% end %>
   </td>
 </tr>
@@ -32,12 +32,12 @@
           <center>
             <h3><%= t "user.trainee.info" %></h3>
             <span>
-              <p><%= t "helpers.label.user.gender" %>: <%= t"user.gender.#{user.gender}" %></p>
+              <p><%= t "helpers.label.user.gender" %>: <%= t "user.gender.#{user.gender}" %></p>
             </span>
             <span>
               <p>
                 <%= t "helpers.label.user.birthday" %>:
-                <%= l(user.birthday) %>
+                <%= l(user.birthday, format: :short) %>
               </p>
             </span>
           </center>

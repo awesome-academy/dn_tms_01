@@ -1,0 +1,46 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close"
+      data-dismiss="modal" aria-hidden="true"></button>
+      <h4 class="modal-title" id="myModalLabel">Profile</h4>
+    </div>
+    <div class="modal-body">
+      <center>
+        <%= image_tag current_user.avatar.url, class: "img-circle profile_image" %>
+        <h3 class="media-heading"><%= current_user.fullname %>
+          <small><%= t "user.role.#{current_user.role}" %></small></h3>
+        </center>
+        <span><strong>Course is participating: </strong></span>
+        <% current_user.course_users.each do |course| %>
+        <span class="label label-<%= fill_course_status_color course.course %>">
+          <%= course.name %>
+        </span>
+        <% end %>
+        <br>
+        <span><strong>Subject is participating: </strong></span>
+        <% subject_studying(current_user.course_users).each do |subject| %>
+          <span class="label label-<%= fill_course_status_color subject %> %>">
+            <%= subject.name %>
+          </span>
+        <% end %>
+        <hr>
+        <center>
+          <p class="text-left"><strong>Task: </strong><br>
+            Tutorial: <span class="label label-success">Finish</span><br>
+            Test: <span class="label label-warning">Ready</span>
+          </p>
+          <br>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <center>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,12 +16,18 @@ module CoursesHelper
   def fill_course_status_color course
     if course.init?
       "primary"
-    elsif course.start?
+    elsif course.studying?
       "success"
     elsif course.finish?
-      "default"
+      "danger"
     else
       "default"
+    end
+  end
+
+  def subject_studying course_subjects
+    course_subjects.each do |course_subject|
+      return course_subject.subject_users
     end
   end
 end

@@ -1,0 +1,19 @@
+<% provide(:title, t("page.detail_course")) %>
+<div class="row">
+  <h1 class="text-center"><%= @course_user.name %></h1>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <p><b><%= t "table.description" %></b> <%= @course_user.description %></p>
+    <p><b><%= t "table.duration" %></b> <%= @course_user.duration %>
+      <%= @course_user.duration_type %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <p><b><%= t "table.date_start"  %></b> <%= l(@course_user.date_start, format: :short) %></p>
+    <p><b><%= t "table.date_end"  %></b> <%= l(@course_user.date_end, format: :short) %></p>
+  </div>
+</div>
+<div class="container">
+  <%= render partial: "course_users/subject", collection: @course_user.subject_users %>
+</div>

@@ -1,0 +1,19 @@
+<% provide(:title, t("page.user_page")) %>
+<div class="row ">
+  <table class="table table-inverse verticalalign">
+    <thead>
+      <tr>
+        <th><%= t "table.course_name" %></th>
+        <th><%= t "table.Description" %></th>
+        <th><%= t "table.duration" %></th>
+        <th><%= t "table.picture" %></th>
+        <th><%= t "table.status" %></th>
+        <th><%= t "table.date_start" %></th>
+        <th><%= t "table.date_end" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "courses/course", collection: @courses %>
+    </tbody>
+  </table>
+</div>
