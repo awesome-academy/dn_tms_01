@@ -17,4 +17,3 @@ Rails.application.config.assets.precompile += %w( supervisors/custom.js
   supervisors/ajax_helper.js sup_user.css supervisors/course.scss
   supervisors/course.js supervisors/user.js supervisors/trainees.css
   supervisors/trainees.js supervisors/subjects.js supervisors/super.css )
-

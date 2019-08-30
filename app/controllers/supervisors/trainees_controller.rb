@@ -3,7 +3,6 @@ class Supervisors::TraineesController < Supervisors::SupervisorsController
 
   def new
     @users = User.trainees.newest
-    @course_user = CourseUser.new
   end
 
   def create
