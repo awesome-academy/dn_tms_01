@@ -58,3 +58,4 @@ RSpec.describe Subject, type: :model do
   end
 
 end
+

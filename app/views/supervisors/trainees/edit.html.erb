@@ -1,50 +1,53 @@
 <% provide :title, t("page.assign_trainee") %>
 <%= stylesheet_link_tag "supervisors/trainees" %>
-
 <div class="row">
   <h1 class="text-center"><%= t("page.assign_trainee") %></h1>
-  <%= form_for [:supervisors, @course],
+  <div class="col-md-12">
+    <%= form_for [:supervisors, @course],
     url: supervisors_trainee_path(@course) do |f| %>
-    <%= link_to fa_icon("check" ,text: t("page.assign_trainee")), "#",
-      class: "btn btn-default btn-add-task",
-      data: {toggle: "modal", target: ".bs-example-modal-lg"} %>
-    <%= button_tag fa_icon("save", text: t("helpers.submit.update")),
-      type: :submit, class: "btn btn-success" %>
+    <%= link_to nil, data: {toggle: "modal", target: ".bs-example-modal-lg"},
+    class: "btn btn-primary btn-add-task" do %>
+    <i class="fa fa-check"><%= t("page.assign_trainee") %></i>
+    <% end %>
+    <%= button_tag type: :submit, class: "btn btn-success" do %>
+    <i class="fa fa-save"><%= t "helpers.submit.update" %></i>
+    <% end %>
     <table class="table table-bordered">
       <thead>
-      <tr>
-        <th><%= t "table.column.avatar" %></th>
-        <th><%= t "table.column.fullname" %></th>
-        <th><%= t "table.column.email" %></th>
-        <th><%= t "table.column.birthday" %></th>
-        <th><%= t "table.column.gender" %></th>
-        <th><%= t "table.column.action" %></th>
-      </tr>
+        <tr>
+          <th><%= t "table.column.avatar" %></th>
+          <th><%= t "table.column.fullname" %></th>
+          <th><%= t "table.column.email" %></th>
+          <th><%= t "table.column.birthday" %></th>
+          <th><%= t "table.column.gender" %></th>
+          <th><%= t "table.column.action" %></th>
+        </tr>
       </thead>
       <tbody class="trainees-data-tables">
-      <%= f.fields_for :course_users do |course_user| %>
+        <%= f.fields_for :course_users do |course_user| %>
         <%= render "supervisors/trainees/course_user", f: course_user %>
-      <% end %>
+        <% end %>
       </tbody>
     </table>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <div class="modal fade bs-example-modal-lg modal-users" tabindex="-1"
-  role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"
-          aria-label="<%= t "helpers.button.close" %>">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">
-          <%= t "page.assign_trainee" %>
-        </h4>
-      </div>
-      <div class="modal-body">
-        <table class="table users table-bordered table-striped">
-          <thead>
+role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+      aria-label="<%= t "helpers.button.close" %>">
+      <span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">
+        <%= t "page.assign_trainee" %>
+      </h4>
+    </div>
+    <div class="modal-body">
+      <table class="table users table-bordered table-striped">
+        <thead>
           <tr>
             <th class="no-sort">
               <input type="checkbox" class="chk-all">
@@ -62,35 +65,35 @@
               <span class="offset-left"><%= t "table.column.gender" %></span>
             </th>
           </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
           <% @users.each do |user| %>
-            <tr data-id="<%= user.id %>" style="display: table-row">
-              <td>
-                <%= check_box_tag nil, user.id, false, class:"chk-user",
-                  data:{avatar: user.avatar.url, fullname: user.fullname,
-                    email: user.email, birthday: user.birthday.to_s,
-                    gender: user.gender} %>
+          <tr data-id="<%= user.id %>" style="display: table-row">
+            <td>
+              <%= check_box_tag nil, user.id, false, class:"chk-user",
+              data:{avatar: user.avatar.url, fullname: user.fullname,
+                email: user.email, birthday: user.birthday.to_s,
+                gender: user.gender} %>
               </td>
               <td><%= user.fullname %></td>
               <td><%= user.email %></td>
               <td><%= l user.birthday, format: :default %></td>
               <td class="gender-col">
                 <i class="fa <%= display_gender user %>"></i></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <%= link_to t("helpers.button.assign"), "#",
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <%= link_to t("helpers.button.assign"), "#",
           class: "btn btn-warning btn-assign", data: {dismiss: "modal"} %>
-        <%= link_to t("helpers.button.close"), "#", class: "btn btn-default",
+          <%= link_to t("helpers.button.close"), "#", class: "btn btn-default",
           data: {dismiss: "modal"} %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<%= javascript_include_tag "supervisors/custom.js" %>
-<%= javascript_include_tag "supervisors/trainees.js" %>
+  <%= javascript_include_tag "supervisors/custom.js" %>
+  <%= javascript_include_tag "supervisors/trainees.js" %>

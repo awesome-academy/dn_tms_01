@@ -1,10 +1,12 @@
 <div class="subject">
   <div class="col-md-11">
     <%= f.select :subject_id, @subjects.collect {|sub| [sub.name, sub.id] }, {},
-      {class: "form-control select-subject"} %>
+      {class: "form-control"} %>
   </div>
   <div class="col-md-1 no-padding">
     <%= f.hidden_field :_destroy %>
-    <%= link_to fa_icon("trash", text: ""), nil, class: "remove_record" %>
+    <%= link_to "", class: "remove_record" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
   </div>
 </div>

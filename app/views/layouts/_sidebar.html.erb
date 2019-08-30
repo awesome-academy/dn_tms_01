@@ -1,63 +1,72 @@
-<nav id="sidebar" class="">
-    <div class="sidebar-header">
-        <h3>Supervisor Page</h3>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+            <%= link_to image_tag(current_user.avatar.url, alt: current_user.fullname,
+        class: "img-responsive img-rounded") %>
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+            <strong><%= current_user.fullname %></strong>
+          </span>
+          <span class="user-role"><%= current_user.role.upcase %></span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li class="sidebar-dropdown">
+            <%= link_to supervisors_courses_path do %>
+              <i class="fa fa-tachometer-alt"></i>
+              <span><%= t "course.course" %></span>
+              <span class="badge badge-pill badge-warning">New</span>
+            <% end %>
+          </li>
+          <li class="sidebar-dropdown">
+            <%= link_to supervisors_subjects_path do %>
+              <i class="fa fa-shopping-cart"></i>
+              <span><%= t "subject" %></span>
+              <span class="badge badge-pill badge-danger">3</span>
+            <% end %>
+          </li>
+          <li class="sidebar-dropdown">
+            <%= link_to supervisors_users_path do %>
+              <i class="far fa-gem"></i>
+              <span><%= t "page.user_page" %></span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
     </div>
-
-    <ul class="list-unstyled components">
-        <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse"
-                aria-expanded="false" class="dropdown-toggle">Course</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li>
-                    <a href="#">Add Course</a>
-                </li>
-                <li>
-                    <a href="#">List Course</a>
-                </li>
-                <li>
-                    <a href="#">Course is opening</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">User</a>
-        </li>
-        <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                class="dropdown-toggle">Subject</a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li>
-                    <a href="#">Add Subject</a>
-                </li>
-                <li>
-                    <a href="#">List Subject</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#Task" data-toggle="collapse" aria-expanded="false"
-                class="dropdown-toggle">Task</a>
-            <ul class="collapse list-unstyled" id="Task">
-                <li>
-                    <a href="#">Add Task</a>
-                </li>
-                <li>
-                    <a href="#">List Task</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Create Course</a>
-        </li>
-    </ul>
-
-    <ul class="list-unstyled CTAs">
-        <li>
-            <a href="" class="download">Profile</a>
-        </li>
-        <li>
-            <a href="" class="article">Logout</a>
-        </li>
-    </ul>
-</nav>
-<%= stylesheet_link_tag "sup_user" %>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <%= link_to logout_path, method: :delete do %>
+        <i class="fa fa-power-off"></i>
+      <% end %>
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+        <%= render "layouts/shared/flash_messages" %>
+        <%= yield %>
+    </div>
+  </main>
+  <!-- page-content" -->
+</div>

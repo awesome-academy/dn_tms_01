@@ -17,15 +17,17 @@
     <%= f.text_field :name, class: "form-control" %>
     <%= display_error :name %>
   </div>
-  <div class="col-md-6">
-    <%= f.label :duration_type %>
-    <%= f.select :duration_type, Course.duration_type_i18n, {},
-      {class: "form-control"} %>
-  </div>
-  <div class="col-md-6">
-    <%= f.label :duration %>
-    <%= f.text_field :duration, class: "form-control", type: "number" %>
-    <%= display_error :duration %>
+  <div class="form-row">
+      <div class="col-md-6">
+      <%= f.label :duration_type %>
+      <%= f.select :duration_type, Course.duration_type_i18n, {},
+        {class: "form-control"} %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :duration %>
+      <%= f.text_field :duration, class: "form-control", type: "number" %>
+      <%= display_error :duration %>
+    </div>
   </div>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -54,8 +56,7 @@
           <strong class="panel-title">
             <%= t "helpers.label.course.course_subjects" %>
           </strong>
-          <%= link_to_add_row fa_icon("plus-circle", text: ""), f,
-            :course_subjects, class: "btn btn-add-task" %>
+          <%= link_to_add_row "More", f, :course_subjects, class: "btn btn-add-task"%>
         </div>
         <div class="panel-body">
           <%= display_error :course_subjects, "" %>

@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3" id="flash_messages">
+<div class="col-md-6 offset-3" id="flash_messages">
   <% flash.each do |key, value| %>
   <%= content_tag(:div, value, {class: "alert alert-#{key}"}) %>
   <% end %>

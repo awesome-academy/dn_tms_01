@@ -1,4 +1,4 @@
-class Supervisors::CoursesController < ApplicationController
+class Supervisors::CoursesController < Supervisors::SupervisorsController
   before_action :load_course, only: %i(edit update destroy)
   before_action :load_subjects, except: %i(index destroy show)
 
@@ -45,7 +45,7 @@ class Supervisors::CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit :name, :description, :duration,
-      :duration_type, :picture, :status,:date_start, :date_end,
+      :duration_type, :picture, :status, :date_start, :date_end,
       course_subjects_attributes: [:id, :course_id, :subject_id,
         :status, :_destroy]
   end

@@ -1,4 +1,4 @@
-class Supervisors::TraineesController < ApplicationController
+class Supervisors::TraineesController < Supervisors::SupervisorsController
   before_action :load_users, only: %i(edit update)
   before_action :load_course, only: %i(edit update)
 

@@ -7,7 +7,7 @@ $('.btn-load-modal').click(function(){
 
 $('#btn-delete').click(function () {
   let id = $(this).attr('data-id');
-  let url = $(this).context.baseURI + '/' + id;
+  let url = window.location.origin + '/supervisors/courses/' + id;
   $.ajax({
     method: 'DELETE',
     dataType: 'json',

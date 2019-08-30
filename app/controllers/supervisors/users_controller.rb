@@ -1,4 +1,4 @@
-class Supervisors::UsersController < ApplicationController
+class Supervisors::UsersController < Supervisors::SupervisorsController
   before_action :load_user, only: %i(edit update destroy)
   before_action :is_supervisor?
 

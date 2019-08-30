@@ -1,9 +1,9 @@
-class Supervisors::SubjectsController < ApplicationController
+class Supervisors::SubjectsController < Supervisors::SupervisorsController
   before_action :load_subject, except: [:index, :create, :new]
 
   def index
-    @subjects = Subject.includes(:tasks).paginate(per_page: Settings.item_in_page,
-    page: params[:page])
+    @subjects = Subject.includes(:tasks).paginate(per_page:
+      Settings.per_page_default, page: params[:page])
   end
 
   def new
@@ -33,10 +33,10 @@ class Supervisors::SubjectsController < ApplicationController
   end
 
   def destroy
-    if @subject.destroy
-      flash[:warning] = t "messages.destroy_success"
+    flash[:warning] = if @subject.destroy
+      t "messages.destroy_success"
     else
-      flash[:warning] = t "messages.destroy_error"
+      t "messages.destroy_error"
     end
     redirect_to supervisors_subjects_path
   end
@@ -44,7 +44,8 @@ class Supervisors::SubjectsController < ApplicationController
   private
 
   def subject_params
-    params.require(:subject).permit :id, :name, :description, :picture, tasks_attributes: [:id,:name, :subject_id]
+    params.require(:subject).permit :id, :name, :description, :picture,
+      tasks_attributes: [:id, :name, :subject_id]
   end
 
   def load_subject

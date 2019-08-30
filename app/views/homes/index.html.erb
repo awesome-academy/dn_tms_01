@@ -1,111 +1,136 @@
-<% provide(:title, t("page.user_page")) %>
-<div class="row">
-  <h2><%= current_user.fullname %></h2>
-  <div class="col-md-6">
-    <table class="table table-striped">
-      <h3><%= t "user.trainee.list_course" %></h3>
-      <thead>
-        <tr>
-          <th><%= t "table.column.order" %></th>
-          <th><%= t "table.course_name" %></th>
-          <th><%= t "table.duration" %></th>
-          <th><%= t "table.status" %></th>
-          <th><%= t "table.date_start" %></th>
-          <th><%= t "table.date_end" %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1<a href="" title="View details">
-            <i class="fa fa-eye"></i></a>
-          </th>
-          <td>Ruby on Rails</td>
-          <td>20 days</td>
-          <td><span class="label label-success">
-            <%= t"user.status.active" %>
-          </span></td>
-          <td>03/07/2019</td>
-          <td><i class="fa fa-spinner"></i></td>
-        </tr>
-        <tr>
-          <th scope="row">2<a href="" title="View details">
-            <i class="fa fa-eye"></i>
-          </a></th>
-          <td>Laravel</td>
-          <td>20 days</td>
-          <td><span class="label label-info">
-            <%= t"user.status.active" %>
-          </span></td>
-          <td>23/06/2019</td>
-          <td>03/07/2019</td>
-        </tr>
-        <tr>
-          <th scope="row">3 <a href="" title="View details">
-            <i class="fa fa-eye"></i>
-          </a></th>
-          <td>Frond end</td>
-          <td>20 Days</td>
-          <td><span class="label label-warning">
-            <%= t"user.status.active" %></span></td>
-            <td>23/06/2019</td>
-            <td>03/07/2019</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container-fluid main-secction">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+      <img src="https://png.pngtree.com/thumb_back/fw800/back_pic/00/08/57/41562ad4a92b16a.jpg">
     </div>
-    <div class="col-md-6">
-      <table class="table table-striped">
-       <h3><%= t "user.trainee.list_mem" %></h3>
-       <thead>
-        <tr>
-         <th><%= t "table.column.order" %></th>
-         <th><%= t "table.column.fullname" %></th>
-         <th><%= t "table.column.email" %></th>
-         <th><%= t "table.column.role" %></th>
-       </tr>
-     </thead>
-     <tbody>
-      <%= render partial: "homes/user", collection: @users %>
-    </tbody>
-  </table>
-  <%= will_paginate @users %>
-</div>
-</div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close"
-      data-dismiss="modal" aria-hidden="true"></button>
-      <h4 class="modal-title" id="myModalLabel">Profile</h4>
-    </div>
-    <div class="modal-body">
-      <center>
-        <%= image_tag current_user.avatar.url,
-          class: "img-circle profile_image" %>
-        <h3 class="media-heading"><%= current_user.fullname %>
-          <small><%= t "user.role.#{current_user.role}" %></small></h3>
-        </center>
-        <span><strong>Course is participating: </strong></span>
-        <span class="label label-warning">Ruby on Rails</span><br>
-        <span><strong>Subject is participating: </strong></span>
-        <span class="label label-info">GIT</span>
-        <hr>
-        <center>
-          <p class="text-left"><strong>Task: </strong><br>
-            Tutorial: <span class="label label-success">Finish</span><br>
-            Test: <span class="label label-warning">Ready</span>
-          </p>
-          <br>
-        </center>
+    <div class="row user-left-part">
+      <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+        <div class="row ">
+          <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+            <%= link_to image_tag(current_user.avatar.url, alt: current_user.fullname,
+            class: "rounded-circle img-thumbnail") %>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+            <button id="btn-contact" class="btn btn-success btn-block follow">Contactarme</button>
+            <button class="btn btn-warning btn-block">Descargar Curriculum</button>
+          </div>
+          <div class="row user-detail-row">
+            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+              <div class="border"></div>
+              <%= render partial: "homes/course", collection: current_user.courses %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <center>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          Close</button>
-        </center>
+      <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+        <div class="row profile-right-section-row">
+          <div class="col-md-12 profile-header">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                <h1><%= current_user.fullname %></h1>
+                <h5><%= current_user.role %></h5>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
+                <%= link_to "Logout", logout_path,method: "delete" ,class: "btn btn-primary btn-block" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-8">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link " href="#profile" role="tab" data-toggle="tab">
+                      <i class="fas fa-user-circle"></i><%= t "page.profile" %></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#buzz" role="tab" data-toggle="tab">
+                        <i class="fas fa-info-circle"></i><%= t "page.User_list" %></a>
+                      </li>
+                    </ul>
+                    <!-- Tab panes -->
+
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane fade " id="profile">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>ID</label>
+                          </div>
+                          <div class="col-md-6">
+                            <p><%= current_user.id %></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label><%= t "table.column.fullname" %></label>
+                          </div>
+                          <div class="col-md-6">
+                            <p><%= current_user.fullname %></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label><%= t "table.column.email" %></label>
+                          </div>
+                          <div class="col-md-6">
+                            <p><%= current_user.email %></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label><%= t "table.column.gender" %></label>
+                          </div>
+                          <div class="col-md-6">
+                            <p><%= current_user.gender %></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label><%= t "table.column.role" %></label>
+                          </div>
+                          <div class="col-md-6">
+                            <p><%= current_user.role %></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show active" id="buzz">
+                        <hr>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col"><%= t "table.column.fullname" %></th>
+                              <th scope="col"><%= t "table.column.email" %></th>
+                              <th scope="col"><%= t "table.column.role" %></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <%= render partial: "homes/user", collection: @users  %>
+                          </tbody>
+                        </table>
+                        <%= will_paginate @users %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 img-main-rightPart">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row image-right-part">
+                        </div>
+                      </div>
+                      <a href="http://camaradecomerciozn.com/">
+                        <div class="col-md-12 image-right">
+                          <img src="https://cdn.itviec.com/employers/sun-inc/logo/social/cDcdNbGCaVV5xgnmz8Vfv4ed/framgia-inc-logo.jpg">
+                        </div>
+                      </a>
+                      <div class="col-md-12 image-right-detail-section2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>

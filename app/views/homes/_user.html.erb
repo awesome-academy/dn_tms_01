@@ -1,18 +1,21 @@
-<tr>
-  <th scope="row"><%= user.id %></th>
-  <td>
-    <%= link_to user.fullname, "#", data:
-    { toggle: "modal", target: "#myModal#{user.id}"} %>
-  </td>
-  <td><%= user.email %></td>
-  <td>
-    <% if user.supervisor? %>
-    <span class="label label-danger"><%= t "user.role.suppervisor" %></span>
-    <% else %>
-    <span class="label label-default"><%= t "user.role.trainee" %></span>
-    <% end %>
-  </td>
-</tr>
+  <tr>
+    <th scope="row"><%= user.id %></th>
+    <td>
+      <%= link_to user.fullname, "#", data:
+      { toggle: "modal", target: "#myModal#{user.id}"} %>
+    </td>
+    <td><%= user.email %></td>
+    <td>
+      <% if user.supervisor? %>
+      <span class="label label-danger">
+        <%= t "user.role.suppervisor" %>
+        </span>
+      <% else %>
+      <span class="label label-default">
+        <%= t "user.role.trainee" %></span>
+      <% end %>
+    </td>
+  </tr>
 <div class="modal fade" id="myModal<%= user.id%>" tabindex="-1"
   role="dialog" aria-labelledby="myModalLabel-<%= user.id%>"
   aria-hidden="true">
@@ -29,28 +32,28 @@
             class: "img-circle avatar-size")%>
           <h3 class="media-heading"><%= user.fullname %>
             <small><%= t"user.role.#{user.role}" %></small></h3>
-          </center>
-          <center>
-            <h3><%= t "user.trainee.info" %></h3>
-            <span>
-              <p><%= t "helpers.label.user.gender" %>:
-                <%= t"user.gender.#{user.gender}" %></p>
-            </span>
-            <span>
-              <p>
-                <%= t "helpers.label.user.birthday" %>:
-                <%= l(user.birthday) %>
-              </p>
-            </span>
-          </center>
-        </div>
-        <div class="modal-footer">
-          <center>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">
-              <%= t "page.close" %>
-            </button>
-          </center>
-        </div>
+        </center>
+        <center>
+          <h3><%= t "user.trainee.info" %></h3>
+          <span>
+            <p><%= t "helpers.label.user.gender" %>:
+              <%= t"user.gender.#{user.gender}" %></p>
+          </span>
+          <span>
+            <p>
+              <%= t "helpers.label.user.birthday" %>:
+              <%= l(user.birthday) %>
+            </p>
+          </span>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <center>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            <%= t "page.close" %>
+          </button>
+        </center>
       </div>
     </div>
   </div>
+</div>
