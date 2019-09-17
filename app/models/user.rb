@@ -36,8 +36,6 @@ class User < ApplicationRecord
   # Query options
   scope :newest, ->{order id: :desc}
   scope :order_role, ->{order role: :desc}
-  scope :trainees, ->{where role: User.roles[:trainee]}
-  scope :supervisors, ->{where role: User.roles[:supervisor]}
   scope :byId, ->(id){where id: id}
 
   class << self

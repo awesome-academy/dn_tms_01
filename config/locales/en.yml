@@ -1,7 +1,9 @@
 en:
   date:
     formats:
-      default: "%d-%m-%Y"
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
   title: "FRAMGIA TRAINING SYSTEM"
   session:
     login: "Please login"
@@ -156,3 +158,9 @@ en:
       expire: "Expire at : %{date}"
       subjects: "Subjects : %{subject}"
       status: "Status :"
+    end_of_month:
+      subject: "Notification end of month"
+      course: "Course name"
+      status: "Status"
+      date_end: "Date end"
+      trainees: "List trainees"

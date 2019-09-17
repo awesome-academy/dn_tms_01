@@ -1,15 +1,4 @@
 <div class="row">
-  <div class="col-md-12">
-    <h3 class="text-center">Infomartion: </h3>
-    <div class="row">
-      <div class="col-md-6 text-right">Name: Nguyen thuong</div>
-      <div class="col-md-6">Email: nguyenthuong@gmail.com</div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 text-right">Course name: Design</div>
-      <div class="col-md-6">Date end: 11/11/2019</div>
-    </div>
-  </div>
   <div class="col-md-11 offset-1 ">
     <%= form_for(:course_user, url: supervisors_trainees_path ) do |f| %>
     <div class="row">
@@ -26,20 +15,20 @@
         </thead>
         <tbody>
           <% @users.each do |student|%>
-          <tr id="vertical">
-            <th scope="row"><%= student.id %></th>
-            <td><%= student.fullname.upcase %></td>
-            <td><%= link_to image_tag(student.avatar.url, class: "rounded-circle avatar-mini") %></td>
-            <td><%= student.email %></td>
-            <td>
-              <%= f.hidden_field :course_id, value: params[:id] %>
-              <% if exists_in_course?(params[:id], student.id) %>
-              <span class="fa fa-check destroy" id="<%=  student.id %>"></span>
-              <% else %>
-              <%= check_box_tag "course_user[user_ids][]", student.id, false, class: "checkbox" %>
-              <% end %>
-            </td>
-          </tr>
+            <tr id="vertical">
+              <th scope="row"><%= student.id %></th>
+              <td><%= student.fullname.upcase %></td>
+              <td><%= link_to image_tag(student.avatar.url, class: "rounded-circle avatar-mini") %></td>
+              <td><%= student.email %></td>
+              <td>
+                <%= f.hidden_field :course_id, value: params[:id] %>
+                <% if exists_in_course?(params[:id], student.id) %>
+                  <span class="fa fa-check destroy" id="<%=  student.id %>"></span>
+                <% else %>
+                  <%= check_box_tag "course_user[user_ids][]", student.id, false, class: "checkbox" %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
         </tbody>
       </table>

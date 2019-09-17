@@ -33,3 +33,4 @@ RSpec.describe AssignMailer, type: :mailer do
     expect(mail.to[0]).to eq user.email
   end
 end
+

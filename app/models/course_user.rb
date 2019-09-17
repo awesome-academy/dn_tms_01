@@ -11,4 +11,7 @@ class CourseUser < ApplicationRecord
   scope :by_user, ->(user_id){where user_id: user_id}
   scope :by_course_user, ->(course_id, user_id){by_course_id(course_id).
     by_user(user_id)}
+  scope :supervisors, ->{where role: CourseUser.roles[:supervisor]}
+  delegate :fullname, :email, to: :user
+
 end

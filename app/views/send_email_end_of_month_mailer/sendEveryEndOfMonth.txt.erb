@@ -1,0 +1,9 @@
+<h3><%= t "mailer.end_of_month.course" %>: <%= @course.name %></h3>
+<h4><%= t "mailer.end_of_month.status" %>: <%= @course.status %></h4>
+<h4><%= t "mailer.end_of_month.date_end" %>: <%= @course.date_end %></h4>
+<%= t "mailer.end_of_month.trainees" %>
+<ul>
+  <% @list_users.each do |users| %>
+    <li><%= users %></li>
+  <% end %>
+</ul>
